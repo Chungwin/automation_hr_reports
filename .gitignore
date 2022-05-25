@@ -1,0 +1,8 @@
+.env
+credentials/*
+general/*
+holidays/holiday_csvs/*
+holidays/holiday_add_worksheet.py
+holidays/.DS_Store
+holidays/holiday_csvs/.DS_Store
+.DS_Store
