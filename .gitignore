@@ -1,6 +1,8 @@
 .env
 credentials/*
-general/*
+general/general.py
+general/__pycache__/Google.cpython-38.pyc
+general/token_drive_v3.pickle
 holidays/holiday_csvs/*
 holidays/holiday_add_worksheet.py
 holidays/.DS_Store

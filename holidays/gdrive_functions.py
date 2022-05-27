@@ -55,9 +55,9 @@ def upload_latest_csv():
 
         # Gdrive request - upload file (archieve)
         file_metadata = {
-        'name': os.path.basename(latest_file_path).replace('.csv', ''),
-        'mimeType': 'application/vnd.google-apps.spreadsheet',
-        'parents': [f'{gdrive_csv_folder_id}'] 
+            'name': os.path.basename(latest_file_path).replace('.csv', ''),
+            'mimeType': 'application/vnd.google-apps.spreadsheet',
+            'parents': [f'{gdrive_csv_folder_id}'] 
         }
 
         media = MediaFileUpload(filename=latest_file_path, mimetype="text/csv")
