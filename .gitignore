@@ -3,8 +3,11 @@ credentials/*
 general/general.py
 general/__pycache__
 general/token_drive_v3.pickle
+
 holidays/holiday_csvs/*
 holidays/holiday_add_worksheet.py
 holidays/.DS_Store
 holidays/holiday_csvs/.DS_Store
+holidays/token_drive_v3.pickle
+holidays/__pycache__
 .DS_Store

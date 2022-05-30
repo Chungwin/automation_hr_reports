@@ -26,5 +26,5 @@ def get_hibob_report_csv():
         new_row = ["nan" if value == '' else value for value in row]
         list_of_lists.append(new_row)
 
-    print("Report downloaded and transformed")
+    print("Report downloaded from HiBob.")
     return list_of_lists

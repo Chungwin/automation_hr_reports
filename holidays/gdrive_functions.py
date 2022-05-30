@@ -39,7 +39,7 @@ def gdrive_holiday_filenames():
         return file_names_array
 
 
-def upload_latest_csv():
+def update():
     # Get latest csv from folder
     list_of_files = glob.glob(dir_holiday_csvs)
     latest_file_path = max(list_of_files, key=os.path.getctime)
@@ -52,8 +52,9 @@ def upload_latest_csv():
     if file_name in file_name_array:
         print(f'{file_name} already exists in Gdrive.')
     else:
+        print('Imnitiate new holiday report.')
 
-        # Gdrive request - upload file (archieve)
+        # Gdrive request - upload file (archive)
         file_metadata = {
             'name': os.path.basename(latest_file_path).replace('.csv', ''),
             'mimeType': 'application/vnd.google-apps.spreadsheet',
@@ -63,7 +64,7 @@ def upload_latest_csv():
         media = MediaFileUpload(filename=latest_file_path, mimetype="text/csv")
         request = service.files().create(media_body=media, body=file_metadata)
         response = request.execute()
-        print(f'File {response["name"]} uploaded to Gdrive.')
+        print(f'New report archived.')
 
         # Write to sreports-spreadhsete
         gsheets_functions.clear_worksheet()
@@ -71,4 +72,3 @@ def upload_latest_csv():
         gsheets_functions.update_gsheets(list_of_lists)      
 
 
-upload_latest_csv()

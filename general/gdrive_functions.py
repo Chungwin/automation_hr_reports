@@ -17,7 +17,7 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
 
-def get_latest_report_datetime():
+def get_latest_report_date():
 
     # Request
     request  = service.files().list(q=f"parents = '{gdrive_reports_folder_id}'", pageSize=1000)

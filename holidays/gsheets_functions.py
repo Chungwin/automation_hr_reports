@@ -51,5 +51,5 @@ def update_gsheets(list_of_list):
                                                 body={"values": list_of_list}
                                                 )
     response = request.execute()
-    print('Sreport (Holidays) successfully updated.')
+    print('Sreport updated.')
                     
