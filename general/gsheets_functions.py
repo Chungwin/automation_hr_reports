@@ -17,27 +17,38 @@ service = build('sheets', 'v4', credentials=creds)
 
 
 def archive_spreadsheet(new_sheet_id, list_of_list):
-    request = service.spreadsheets().values().update(
-                                                    spreadsheetId=new_sheet_id, 
-                                                    range= "Sheet1!A1", 
-                                                    valueInputOption="USER_ENTERED",
-                                                    body={"values": list_of_list}
-                                                    )    
-    response = request.execute()
-    print('Report archived.')
+    try:
+        request = service.spreadsheets().values().update(
+                                                        spreadsheetId=new_sheet_id, 
+                                                        range= "Sheet1!A1", 
+                                                        valueInputOption="USER_ENTERED",
+                                                        body={"values": list_of_list}
+                                                        )    
+        response = request.execute()
+        print('Report archived.')
+
+    except Exception as e:
+        print(e)
 
 
 def clear_worksheet():
-    request = service.spreadsheets().values().clear(spreadsheetId=sreports_gsheet_id, range="general!1:1000")
-    response = request.execute()
+    try:
+        request = service.spreadsheets().values().clear(spreadsheetId=sreports_gsheet_id, range="general!1:1000")
+        response = request.execute()
+    except Exception as e:
+        print(e)
 
 
 def update_sreport_general(list_of_list):
-    request = service.spreadsheets().values().update(
-                                                spreadsheetId=sreports_gsheet_id, 
-                                                range= "general!A1", 
-                                                valueInputOption="USER_ENTERED",
-                                                body={"values": list_of_list}
-                                                )
-    response = request.execute()
-    print('Sreport updated.')
+    try:
+        request = service.spreadsheets().values().update(
+                                                    spreadsheetId=sreports_gsheet_id, 
+                                                    range= "general!A1", 
+                                                    valueInputOption="USER_ENTERED",
+                                                    body={"values": list_of_list}
+                                                    )
+        response = request.execute()
+        print('Sreport updated.')
+        
+    except Exception as e:
+        print(e)

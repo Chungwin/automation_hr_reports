@@ -19,37 +19,45 @@ service = build('sheets', 'v4', credentials=creds)
 
 
 def clear_worksheet(): 
-    request = service.spreadsheets().values().clear(spreadsheetId=sreports_gsheet_id, range="holidays!1:1000")
-    response = request.execute()
+    try:
+        request = service.spreadsheets().values().clear(spreadsheetId=sreports_gsheet_id, range="holidays!1:1000")
+        response = request.execute()
+    except Exception as e:
+        print(e)
 
 
 def transform_to_string_lol(latest_file_path):
-    df = pd.read_csv (latest_file_path)
-    lol = df.values.tolist()
-    list_of_list = []
-    headers = ['Display name', 'Department', 'Business Unit', 'Current policy', 'Current balance', 'Taken this cycle', 'Amount accrued this cycle', 'Accrual effective date', 'Booked before end of cycle', 'Start date', 'Reports to', 'YOS allowance increase', 'Termination date', 'Site']
-    list_of_list.append(headers)
+    try:
+        df = pd.read_csv (latest_file_path)
+        lol = df.values.tolist()
+        list_of_list = []
+        headers = ['Display name', 'Department', 'Business Unit', 'Current policy', 'Current balance', 'Taken this cycle', 'Amount accrued this cycle', 'Accrual effective date', 'Booked before end of cycle', 'Start date', 'Reports to', 'YOS allowance increase', 'Termination date', 'Site']
+        list_of_list.append(headers)
 
-    for row in lol:
-        string_row = []
-        for item in row:
-            if type(item) == float:
-                item = str(item)
-                string_row.append(item)
-            else:
-                string_row.append(item)
-        list_of_list.append(string_row)
+        for row in lol:
+            string_row = []
+            for item in row:
+                if type(item) == float:
+                    item = str(item)
+                    string_row.append(item)
+                else:
+                    string_row.append(item)
+            list_of_list.append(string_row)
 
-    return list_of_list
+        return list_of_list
+    except Exception as e:
+        print(e)
 
 
 def update_gsheets(list_of_list):
-    request = service.spreadsheets().values().update(
-                                                spreadsheetId=sreports_gsheet_id, 
-                                                range= "holidays!A1", 
-                                                valueInputOption="USER_ENTERED",
-                                                body={"values": list_of_list}
-                                                )
-    response = request.execute()
-    print('Sreport updated.')
-                    
+    try:
+        request = service.spreadsheets().values().update(
+                                                    spreadsheetId=sreports_gsheet_id, 
+                                                    range= "holidays!A1", 
+                                                    valueInputOption="USER_ENTERED",
+                                                    body={"values": list_of_list}
+                                                    )
+        response = request.execute()
+        print('Sreport updated.')
+    except Exception as e:
+        print(e)        
