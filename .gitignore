@@ -10,4 +10,7 @@ holidays/.DS_Store
 holidays/holiday_csvs/.DS_Store
 holidays/token_drive_v3.pickle
 holidays/__pycache__
+
+exits/__pycache__
+exits/token_sheets_v4.pickle
 .DS_Store

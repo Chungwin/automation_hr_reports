@@ -33,7 +33,7 @@ def archive_spreadsheet(new_sheet_id, list_of_list):
 
 def clear_worksheet():
     try:
-        request = service.spreadsheets().values().clear(spreadsheetId=sreports_gsheet_id, range="general!1:1000")
+        request = service.spreadsheets().values().clear(spreadsheetId=sreports_gsheet_id, range="general!A:U")
         response = request.execute()
     except Exception as e:
         print(e)
@@ -49,6 +49,6 @@ def update_sreport_general(list_of_list):
                                                     )
         response = request.execute()
         print('Sreport updated.')
-        
+
     except Exception as e:
         print(e)

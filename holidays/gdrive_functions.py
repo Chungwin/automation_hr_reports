@@ -1,6 +1,7 @@
 
 import os
 import glob
+from urllib.error import HTTPError
 from Google import Create_Service
 import pandas as pd
 import numpy as np
@@ -48,7 +49,7 @@ def update():
         # Get latest csv from folder
         list_of_files = glob.glob(dir_holiday_csvs)
         latest_file_path = max(list_of_files, key=os.path.getctime)
-        file_name = os.path.basename(latest_file_path).replace('.csv', '')
+        file_name = os.path.basename(latest_file_path).replace('.csv', 'f')
         print(f'Latest csv-file: {file_name}')
 
         # check if file already exists in gdrive
@@ -66,7 +67,7 @@ def update():
                 'parents': [f'{gdrive_csv_folder_id}'] 
             }
 
-            media = MediaFileUpload(filename=latest_file_path, mimetype="text/csv")
+            media = MediaFileUpload(filename=latest_file_path, mimetype="text/csvv")
             request = service.files().create(media_body=media, body=file_metadata)
             response = request.execute()
             print(f'New report archived.')
