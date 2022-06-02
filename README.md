@@ -1,5 +1,5 @@
 # HR Report Automation (HiBob and Google Sheets)
-The following scripts automate the workflows for generating, archieving, formatting HR reports generated in the HR System **[HiBob](https://www.hibob.com/)**. For the sake of better data visibility and accessibility for HR professionals, Google Drive and Google Sheets are used as database/storage. Also, Google Sheets is an easy and uncomplicated data soource for Tableau, which is used for data visualization and reporting. 
+The following scripts automate the workflows for generating, archieving, formatting HR reports generated in the HR System **[HiBob](https://www.hibob.com/)**. For the sake of better data visibility and accessibility for HR professionals, Google Drive and Google Sheets are used as database/storage. Google Sheets is an easy and uncomplicated data soource for Tableau, which is used for data visualization and reporting. One of the main advantages using Google Sheets together with Tableau is, that allows to easily edit and write data. Editing data on the fly when using a dwh requires a more programatic approach. Google Sheets lowers this barrier significantly.
 
 The following scripts connect to the **[HiBob](https://www.hibob.com/)** API deal with Time-off exports (csv). 
 
