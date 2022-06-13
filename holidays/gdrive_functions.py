@@ -67,7 +67,7 @@ def update():
                 'parents': [f'{gdrive_csv_folder_id}'] 
             }
 
-            media = MediaFileUpload(filename=latest_file_path, mimetype="text/csvv")
+            media = MediaFileUpload(filename=latest_file_path, mimetype="text/csv")
             request = service.files().create(media_body=media, body=file_metadata)
             response = request.execute()
             print(f'New report archived.')
